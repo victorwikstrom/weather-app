@@ -1,8 +1,11 @@
 import React from 'react';
 import { getDate, getThermometerIcon } from '../helpers';
+import PropTypes from 'prop-types';
 
-const Header = ({ city, temperature }) => {
+const Header = (headerProps) => {
+  const { city, temperature } = headerProps;
   const currentDate = getDate();
+  const thermometerIcon = getThermometerIcon(temperature);
 
   return (
     <div className='w-full flex justify-between items-center'>
@@ -18,13 +21,20 @@ const Header = ({ city, temperature }) => {
           </div>
           <img
             className='h-16 w-auto'
-            src={getThermometerIcon(temperature)}
+            src={thermometerIcon}
             alt='temperature'
           />
         </div>
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  weather: {
+    city: PropTypes.string,
+    temperature: PropTypes.number,
+  },
 };
 
 export default Header;

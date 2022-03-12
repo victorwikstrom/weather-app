@@ -1,4 +1,4 @@
-const WEATHER_KEY = "80c16cd6899bce0dcd555dec46caefc9";
+const WEATHER_KEY = "fd06a8d6a2c6e3e87826c93258160dbd";
 const WHOIS_KEY = "at_uYXExlLI9kf5o1Jft3WAIZxQmWd4h";
 
 export const getWeather = async (location) => {

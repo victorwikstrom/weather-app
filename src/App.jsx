@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from './components/Header';
 import Weather from './components/Weather';
 import { getLocation, getWeather } from './apiCalls';
@@ -14,8 +15,9 @@ const App = () => {
     const getData = async () => {
       try {
         const location = await getLocation();
-        const weather = await getWeather(location);
+        const weather = await getWeather(location); // Set another city as parameter to getWeather() to see weather at another location
         setLocation(location);
+        console.log(weather);
         setWeather({
           temperature: weather.current.temperature,
           description: weather.current.weather_descriptions[0],

@@ -87,6 +87,6 @@ export const getWeatherIcon = (desc) => {
         } else if (d.includes("thunder")) {
             return thunder
         }
-    } else return null
+    } else return partlyCloudy
 
 }
