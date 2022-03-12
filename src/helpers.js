@@ -9,26 +9,6 @@ import rain from "./assets/icons/rain.svg"
 import thunder from "./assets/icons/thunderstroms.svg"
 import fog from "./assets/icons/foggy.svg"
 
-export const getClientLocation = () => {
-    const success = (pos) => {
-        console.log(pos)
-        return {
-            lat: pos.coords.latitude,
-            long: pos.coords.longitude,
-        }
-    }
-    const error = (err) => {
-        console.error(err)
-    }
-
-    if (navigator.geolocation) {
-        return navigator.geolocation.getCurrentPosition(success, error);
-    }
-    else {
-        return "This feature is not supported by this browser.";
-    }
-}
-
 export const getDate = () => {
     const date = new Date();
     const dateOpts = {
