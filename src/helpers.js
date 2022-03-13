@@ -43,7 +43,6 @@ export const getThermometerIcon = (temp) => {
 }
 
 export const getWeatherIcon = (desc) => {
-    console.log(desc)
     if (desc) {
         const d = desc.toLowerCase()
         if (d.includes("sunny")) {

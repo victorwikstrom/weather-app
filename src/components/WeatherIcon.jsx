@@ -7,8 +7,6 @@ function WeatherIcon(weatherIconProps) {
   const { description } = weatherIconProps;
   const [icon, setIcon] = useState('👾');
 
-  console.log(weatherIconProps);
-
   useEffect(() => {
     setIcon(getWeatherIcon(description));
   }, [weatherIconProps]);
