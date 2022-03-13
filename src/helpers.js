@@ -22,7 +22,7 @@ export const getTemperatureText = (temp) => {
     } else if (temp > 12 && temp <= 18) {
         return "It's quite nice and"
     } else if (temp > 18 && temp <= 24) {
-        return "Go outside! It's probably nice and"
+        return "Go outside! It's lagom warm and"
     } else if (temp > 24 && temp <= 32) {
         return "Alright, real high summer temperatures and"
     } else if (temp > 32) {
