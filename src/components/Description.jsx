@@ -11,7 +11,12 @@ function Description(descriptionProps) {
     const tempDesc = getTemperatureText(temperature);
     const weatherDesc = description.toLowerCase();
     setDescriptionText(
-      tempDesc + ' ' + weatherDesc + ' in ' + location + ' right now!'
+      tempDesc +
+        ' ' +
+        (weatherDesc === 'overcast' ? 'gloomy' : weatherDesc) +
+        ' in ' +
+        location +
+        ' right now!'
     );
   }, [descriptionProps]);
 

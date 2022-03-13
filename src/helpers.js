@@ -47,12 +47,12 @@ export const getWeatherIcon = (desc) => {
         const d = desc.toLowerCase()
         if (d.includes("sunny")) {
             return "☀️"
-        } else if (d.includes("overcast")) {
+        } else if (d === "partly cloudy") {
+            return "🌤"
+        } else if (d.includes("overcast") || d.includes("cloudy")) {
             return "☁️"
         } else if (d.includes("clear")) {
             return "🌖"
-        } else if (d.includes("partly cloudy")) {
-            return "🌤"
         } else if (d.includes("snow")) {
             return "🌨"
         } else if (d.includes("fog")) {
