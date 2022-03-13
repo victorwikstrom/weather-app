@@ -1,11 +1,14 @@
 import React from 'react';
-import Header from './components/Header';
-import Weather from './components/Weather';
-import { getLocation, getWeather } from './apiCalls';
+import { getWeatherData } from './apiCalls';
 import { useState, useEffect } from 'react';
+import Temperature from './components/Temperature';
+import WeatherIcon from './components/WeatherIcon';
+import Description from './components/Description';
 
 const App = () => {
-  const [location, setLocation] = useState('...');
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [location, setLocation] = useState();
   const [weather, setWeather] = useState({
     temperature: null,
     description: null,
@@ -14,14 +17,15 @@ const App = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const location = await getLocation();
-        const weather = await getWeather(location); // Set another city as parameter to getWeather() to see weather at another location
-        setLocation(location);
+        const data = await getWeatherData();
+        setLocation(data.location.name);
         setWeather({
-          temperature: weather.current.temperature,
-          description: weather.current.weather_descriptions[0],
+          temperature: data.current.temp_c,
+          description: data.current.condition.text,
         });
+        setLoading(false);
       } catch (error) {
+        setError(true);
         console.error(error);
       }
     };
@@ -29,13 +33,25 @@ const App = () => {
   }, []);
 
   return (
-    <div className='h-screen w-full flex justify-center items-center text-left'>
-      <div className='w-full sm:max-w-[448px] sm:max-h-[512px] rounded-lg border-black border-2 sm:p-8 p-4'>
-        <Header city={location} temperature={weather.temperature} />
-        <Weather
-          temperature={weather.temperature}
-          description={weather.description}
-        />
+    <div className='h-screen flex justify-center items-center text-left'>
+      <div className='flex justify-between items-center border-[1px] border-gray-light rounded-lg py-2 px-3 shadow-lg sm:max-w-md'>
+        {!error && !loading && (
+          <>
+            <Temperature temperature={weather.temperature} />
+            <WeatherIcon description={weather.description} />
+            <Description
+              location={location}
+              description={weather.description}
+              temperature={weather.temperature}
+            />
+          </>
+        )}
+        {error && (
+          <div>
+            We got some problems with the weather widget at the moment...
+          </div>
+        )}
+        {loading && <div>Retriving weather data...</div>}
       </div>
     </div>
   );

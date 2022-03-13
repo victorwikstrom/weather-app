@@ -1,21 +1,11 @@
-const WEATHER_KEY = "fd06a8d6a2c6e3e87826c93258160dbd";
-const WHOIS_KEY = "at_uYXExlLI9kf5o1Jft3WAIZxQmWd4h";
+const KEY = "6a2eb3edc3bb4031a2c110013221303";
 
-export const getWeather = async (location) => {
+export const getWeatherData = async () => {
     try {
-        const response = await fetch(`http://api.weatherstack.com/current?access_key=${WEATHER_KEY}&query=${location}`)
-        return await response.json();
-    } catch (error) {
-        console.error(error)
-        return "Couldn't fetch weather data"
-    }
-}
-
-export const getLocation = async () => {
-    try {
-        const response = await fetch(`https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=${WHOIS_KEY}`);
+        // Change query 'auto:ip' to any other location too see weather in other places
+        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${KEY}&q=auto:ip`);
         const result = await response.json();
-        return result.location.city;
+        return result;
     } catch (error) {
         console.error(error)
         return "Couldn't fetch location data"

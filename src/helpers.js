@@ -15,7 +15,7 @@ export const getDate = () => {
 export const getTemperatureText = (temp) => {
     if (temp < 0) {
         return "It's cold as ### and";
-    } else if (temp > 0 && temp <= 4) {
+    } else if (temp > 0 && temp <= 6) {
         return "It's quite cold and"
     } else if (temp > 6 && temp <= 12) {
         return "It's neither warm nor cold and"
@@ -43,6 +43,7 @@ export const getThermometerIcon = (temp) => {
 }
 
 export const getWeatherIcon = (desc) => {
+    console.log(desc)
     if (desc) {
         const d = desc.toLowerCase()
         if (d.includes("sunny")) {
@@ -62,6 +63,6 @@ export const getWeatherIcon = (desc) => {
         } else if (d.includes("thunder")) {
             return "🌩"
         }
-    } else return "👾" // This should be done in a better way... 
+    } else return "😶‍🌫️" // This should be done in a better way... 
 
 }
