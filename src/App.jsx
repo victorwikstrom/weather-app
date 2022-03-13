@@ -51,7 +51,7 @@ const App = () => {
             We got some problems with the weather widget at the moment...
           </div>
         )}
-        {!error && loading && <div>Retriving weather data...</div>}
+        {loading && !error && <div>Retriving weather data...</div>}
       </div>
     </div>
   );
