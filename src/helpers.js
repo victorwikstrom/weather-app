@@ -1,13 +1,6 @@
 import hot from "./assets/icons/hot.svg"
 import medium from "./assets/icons/medium.svg"
 import cold from "./assets/icons/cold.svg"
-import sunny from "./assets/icons/sunny.svg"
-import cloud from "./assets/icons/cloud.svg"
-import partlyCloudy from "./assets/icons/partly-cloudy.svg"
-import snow from "./assets/icons/snow.svg"
-import rain from "./assets/icons/rain.svg"
-import thunder from "./assets/icons/thunderstroms.svg"
-import fog from "./assets/icons/foggy.svg"
 
 export const getDate = () => {
     const date = new Date();
@@ -22,18 +15,18 @@ export const getDate = () => {
 export const getTemperatureText = (temp) => {
     if (temp < 0) {
         return "It's cold as ### and";
-    } else if (temp > 0 && temp <= 6) {
-        return "It's freezing and"
+    } else if (temp > 0 && temp <= 4) {
+        return "It's quite cold and"
     } else if (temp > 6 && temp <= 12) {
         return "It's neither warm nor cold and"
     } else if (temp > 12 && temp <= 18) {
         return "It's quite nice and"
     } else if (temp > 18 && temp <= 24) {
-        return "Go outside! Its nice and"
+        return "Go outside! It's probably nice and"
     } else if (temp > 24 && temp <= 32) {
-        return "Alright, perfect conditions and"
+        return "Alright, real high summer temperatures and"
     } else if (temp > 32) {
-        return "Everyone's probably melting and it's"
+        return "Everyone's melting and it's"
     } else {
         return "Not quite sure but it's"
     }
@@ -53,20 +46,22 @@ export const getWeatherIcon = (desc) => {
     if (desc) {
         const d = desc.toLowerCase()
         if (d.includes("sunny")) {
-            return sunny
+            return "☀️"
         } else if (d.includes("overcast")) {
-            return cloud
+            return "☁️"
+        } else if (d.includes("clear")) {
+            return "🌖"
         } else if (d.includes("partly cloudy")) {
-            return partlyCloudy
+            return "🌤"
         } else if (d.includes("snow")) {
-            return snow
+            return "🌨"
         } else if (d.includes("fog")) {
-            return fog
+            return "😶‍🌫️"
         } else if (d.includes("rain")) {
-            return rain
+            return "🌧"
         } else if (d.includes("thunder")) {
-            return thunder
+            return "🌩"
         }
-    } else return partlyCloudy
+    } else return "👾" // This should be done in a better way... 
 
 }

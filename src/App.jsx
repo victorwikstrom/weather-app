@@ -17,7 +17,6 @@ const App = () => {
         const location = await getLocation();
         const weather = await getWeather(location); // Set another city as parameter to getWeather() to see weather at another location
         setLocation(location);
-        console.log(weather);
         setWeather({
           temperature: weather.current.temperature,
           description: weather.current.weather_descriptions[0],
@@ -31,9 +30,12 @@ const App = () => {
 
   return (
     <div className='h-screen w-full flex justify-center items-center text-left'>
-      <div className='w-full sm:max-w-[448px] sm:max-h-[512px] rounded-lg border-gray-light border-2 sm:p-8 p-4'>
+      <div className='w-full sm:max-w-[448px] sm:max-h-[512px] rounded-lg border-black border-2 sm:p-8 p-4'>
         <Header city={location} temperature={weather.temperature} />
-        <Weather weather={weather} />
+        <Weather
+          temperature={weather.temperature}
+          description={weather.description}
+        />
       </div>
     </div>
   );

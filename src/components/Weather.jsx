@@ -5,33 +5,27 @@ import PropTypes from 'prop-types';
 
 const Weather = (weatherProps) => {
   const { temperature, description } = weatherProps;
-  const [weatherDescription, setWeatherDescription] = useState('');
+  const [weatherDescription, setWeatherDescription] =
+    useState('Retriving data...');
   const [icon, setIcon] = useState('#');
 
   useEffect(() => {
-    const createWeatherDesc = () => {
-      if (temperature) {
-        const temperatureText = getTemperatureText(temperature);
-        const weatherText = description.toLowerCase();
-        return temperatureText + ' ' + weatherText + ' right now!';
-      } else {
-        return 'Retriving data...';
-      }
-    };
-    const createWeatherIcon = () => {
-      if (description) {
-        return getWeatherIcon(description);
-      } else {
-        return '#';
-      }
-    };
-    setWeatherDescription(createWeatherDesc());
-    setIcon(createWeatherIcon());
-  }, [temperature, description]);
+    if (temperature) {
+      const temperatureText = getTemperatureText(temperature);
+      const weatherText = description.toLowerCase();
+      setWeatherDescription(
+        temperatureText + ' ' + weatherText + ' right now!'
+      );
+    }
+
+    if (description) {
+      setIcon(getWeatherIcon(description));
+    }
+  }, [weatherProps]);
 
   return (
     <div className='flex flex-col flex-1 items-center mt-4'>
-      <img className='w-2/3 min-w-[128px]' src={icon} alt='weather icon' />
+      <div className='text-8xl sm:text-[8rem] my-4'>{icon}</div>
       <div className='sm:text-lg mt-6 text-center sm:max-w-[75%]'>
         {weatherDescription}
       </div>
@@ -40,10 +34,7 @@ const Weather = (weatherProps) => {
 };
 
 Weather.propTypes = {
-  weather: {
-    temperature: PropTypes.number,
-    description: PropTypes.string,
-  },
+  weather: PropTypes.object,
 };
 
 export default Weather;

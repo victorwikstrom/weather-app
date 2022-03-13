@@ -20,7 +20,7 @@ const Header = (headerProps) => {
             <div className='text-2xl'>°</div>
           </div>
           <img
-            className='h-16 w-auto'
+            className='md:h-16 h-12 w-auto'
             src={thermometerIcon}
             alt='temperature'
           />
@@ -31,10 +31,7 @@ const Header = (headerProps) => {
 };
 
 Header.propTypes = {
-  weather: {
-    city: PropTypes.string,
-    temperature: PropTypes.number,
-  },
+  weather: PropTypes.object,
 };
 
 export default Header;
