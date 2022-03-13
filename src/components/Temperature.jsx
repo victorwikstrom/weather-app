@@ -7,7 +7,7 @@ function Temperature(temperatureProps) {
   return (
     <div className='flex'>
       <div className='text-7xl sm:text-8xl'>{temperature}</div>
-      <div className='text-2xl'>°</div>
+      <div className='text-3xl sm:text-4xl'>°</div>
     </div>
   );
 }

@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <div className='h-screen flex justify-center items-center text-left'>
-      <div className='flex justify-between items-center border-[1px] border-gray-light rounded-lg py-2 px-3 shadow-lg sm:max-w-md'>
+      <div className='flex justify-between items-center border-[1px] border-gray-light rounded-lg py-2 px-3 shadow-lg sm:max-w-lg max-w-full'>
         {!error && !loading && (
           <>
             <Temperature temperature={weather.temperature} />
