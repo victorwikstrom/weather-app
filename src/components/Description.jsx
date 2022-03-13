@@ -18,7 +18,7 @@ function Description(descriptionProps) {
   return (
     <div>
       {' '}
-      <div className='sm:leading-none max-w-[144px] leading-none sm:text-xl ml-3 py-4 '>
+      <div className='sm:leading-none max-w-[144px] leading-none sm:text-xl ml-3 py-2 '>
         {descriptionText}
       </div>
     </div>
